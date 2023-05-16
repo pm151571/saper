@@ -65,9 +65,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(109, 145);
             label2.Name = "label2";
-            label2.Size = new Size(102, 25);
+            label2.Size = new Size(256, 25);
             label2.TabIndex = 2;
-            label2.Text = "Ilość bomb";
+            label2.Text = "Ilość elementów do znalezienia";
             // 
             // button1
             // 
@@ -91,6 +91,7 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Saper";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }

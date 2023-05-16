@@ -8,6 +8,8 @@ namespace SAPER
     {
         private int boardSize;
         private int numBombs;
+        int countB;
+
 
         private Button[,] buttons;
         private bool[,] bombs;
@@ -29,7 +31,6 @@ namespace SAPER
             buttons = new Button[boardSize, boardSize];
             bombs = new bool[boardSize, boardSize];
 
-            // Tworzenie przycisków
             for (int row = 0; row < boardSize; row++)
             {
                 for (int col = 0; col < boardSize; col++)
@@ -70,9 +71,8 @@ namespace SAPER
         private void Timer_Tick(object sender, EventArgs e)
         {
             elapsedTime++;
-            if (elapsedTime >= 60)
+            if (elapsedTime >= Form1.d*Form1.d*3)
             {
-                // Przegrana po 60 sekundach
                 timer.Stop();
                 MessageBox.Show("Przegrałeś! Upłynął limit czasu.");
                 DisableButtons();
@@ -90,21 +90,21 @@ namespace SAPER
             {
                 if (bombs[row, col])
                 {
-                    button.BackColor = Color.Red;
-                    timer.Stop();
-                    MessageBox.Show("Przegrałeś! Kliknąłeś na bombę.");
-                    DisableButtons();
+                    button.BackColor = Color.Green;
+                    countB++;
+                    if (countB == numBombs)
+                    {
+                        timer.Stop();
+                        MessageBox.Show("Wygrałeś! Odkryłeś wszystkie elementy.");
+                        DisableButtons();
+                    }
+                    
                 }
                 else
                 {
                     button.Enabled = false;
-                    button.BackColor = Color.LightGreen;
-                    if (CheckForWin())
-                    {
-                        timer.Stop();
-                        MessageBox.Show("Wygrałeś! Odkryłeś wszystkie pola poza bombami.");
-                        DisableButtons();
-                    }
+                    button.BackColor = Color.Red;
+                   
                 }
             }
         }
@@ -132,6 +132,11 @@ namespace SAPER
             {
                 button.Enabled = false;
             }
+        }
+
+        private void GRA_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -36,8 +36,13 @@ namespace SAPER
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GRA Gra1 = new GRA(d,b);
+            GRA Gra1 = new GRA(d, b);
             Gra1.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

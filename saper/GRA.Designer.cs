@@ -37,6 +37,7 @@
             ClientSize = new Size(800, 450);
             Name = "GRA";
             Text = "GRA";
+            Load += GRA_Load;
             ResumeLayout(false);
         }
 
